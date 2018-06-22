@@ -4,7 +4,13 @@ import red from '@material-ui/core/colors/red';
 import './App.css';
 import Grid from '@material-ui/core/Grid';
 import axios from 'axios';
-import { Router, Route, IndexRoute, Link, hashHistory } from 'react-router'
+import {Router, Route, IndexRoute, Link, hashHistory} from 'react-router'
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
 
 const styles = theme => ({
     card: {
@@ -57,9 +63,7 @@ const styles = theme => ({
 
 class Network extends Component {
     state = {
-        id: '',
-        nickname: '',
-        email: '',
+        network: {},
     };
 
     handleChange = name => event => {
@@ -75,7 +79,7 @@ class Network extends Component {
     getNetwork = () => {
         axios.get('http://api.monomobile.llolo.lol/api/network/1')
             .then(response => {
-                console.log(response);
+                this.setState({network: response.data})
             })
             .catch(error => {
                 console.log(error);
@@ -84,11 +88,36 @@ class Network extends Component {
 
     render() {
         const {classes} = this.props;
+        const net = this.state.network;
+        console.log(net);
 
         return (
             <React.Fragment>
                 <Grid item md={12} sm={12} xs={12}>
-                    Network page
+                    <p>{net.name} subscribers, call or text anyone using extention</p>
+                    <Paper className={classes.root}>
+                        <Table className={classes.table}>
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell>Nickname</TableCell>
+                                    <TableCell numeric>Extention</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {net.subscribers && net.subscribers.map(n => {
+                                    return (
+                                        <TableRow key={n.id}>
+                                            {/*<TableCell component="th" scope="row">*/}
+                                            {/*{n.id}*/}
+                                            {/*</TableCell>*/}
+                                            <TableCell>{n.nickname}</TableCell>
+                                            <TableCell numeric>{n.extension_display}</TableCell>
+                                        </TableRow>
+                                    );
+                                })}
+                            </TableBody>
+                        </Table>
+                    </Paper>
                 </Grid>
             </React.Fragment>
         );

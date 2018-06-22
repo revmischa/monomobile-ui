@@ -3,16 +3,9 @@ import logo from './face-with-monocle.png';
 import {withStyles} from '@material-ui/core/styles';
 import red from '@material-ui/core/colors/red';
 import './App.css';
-import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import Card from '@material-ui/core/Card';
-import MenuList from '@material-ui/core/MenuList';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import TextField from '@material-ui/core/TextField';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
-import axios from 'axios';
 import Register from './Register'
 import Network from './Network'
 import {Route, IndexRoute, Link, HashRouter  as Router} from 'react-router-dom'
@@ -120,7 +113,7 @@ class App extends Component {
                                 <header className="App-header">
                                     <a href="/" className={classes.linkLogo}><img src={logo} className="App-logo"
                                                                                   alt="logo"/><span
-                                        class="logo-text">MonoMobile</span>
+                                        className={"logo-text"}>MonoMobile</span>
                                     </a>
                                     {/*<MenuList>*/}
                                     {/*<MenuItem className={classes.menuItem}>About</MenuItem>*/}
@@ -130,7 +123,6 @@ class App extends Component {
                                 <Grid className={classes.container} container spacing={0}>
                                     <Route path="/" exact component={Register}/>
                                     <Route path="/network" exact component={Network}/>
-
                                 </Grid>
                             </div>
                         </React.Fragment>

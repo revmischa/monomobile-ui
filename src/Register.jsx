@@ -79,9 +79,9 @@ class Register extends Component {
             nickname: this.state.nickname
         })
             .then(response => {
-                // console.log(response);
-                // this.props.router.push('/network')
-                if (response.is_error) {
+                const res = response.data
+                console.log(response);
+                if (res.is_error === true) {
                     this.setState(() => ({
                         error: true
                     }));
@@ -149,7 +149,7 @@ class Register extends Component {
                                 </Button>
                             </form>
                             {this.state.error === true && (
-                                <div>error</div>
+                                <p className={"red"}>That was an error, please try again or submit correct data</p>
                             )
                             }
 
