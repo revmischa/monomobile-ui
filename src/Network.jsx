@@ -1,16 +1,18 @@
 import React, {Component} from 'react';
 import {withStyles} from '@material-ui/core/styles';
 import red from '@material-ui/core/colors/red';
+import Button from '@material-ui/core/Button';
 import './App.css';
 import Grid from '@material-ui/core/Grid';
 import axios from 'axios';
-import {Router, Route, IndexRoute, Link, hashHistory} from 'react-router'
+import {Router, Route, IndexRoute, hashHistory} from 'react-router'
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import {Link} from 'react-router-dom'
 
 const styles = theme => ({
     card: {
@@ -56,6 +58,10 @@ const styles = theme => ({
     },
     cardFormControl: {
         width: '100%'
+    },
+    linkSimple: {
+        textDecoration: "none",
+        color: '#FE6B8B'
     }
 });
 
@@ -93,7 +99,14 @@ class Network extends Component {
 
         return (
             <React.Fragment>
-                <Grid item md={12} sm={12} xs={12}>
+                <Grid item md={12} sm={12} xs={12} style={{padding: 20}}>
+                    <Link to="/register" className={classes.linkSimple}>
+                        <Button className={classes.button} variant="contained"
+                                type="link"
+                                color="primary">
+                            Register
+                        </Button> to join {net.name} network
+                    </Link>
                     <p>{net.name} subscribers, call or text anyone using extention</p>
                     <Paper className={classes.root}>
                         <Table className={classes.table}>

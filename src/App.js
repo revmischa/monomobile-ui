@@ -121,8 +121,8 @@ class App extends Component {
                                     {/*</MenuList>*/}
                                 </header>
                                 <Grid className={classes.container} container spacing={0}>
-                                    <Route path="/" exact component={Register}/>
-                                    <Route path="/network" exact component={Network}/>
+                                    <Route path="/register" exact component={Register}/>
+                                    <Route path="/" exact component={Network}/>
                                 </Grid>
                             </div>
                         </React.Fragment>
