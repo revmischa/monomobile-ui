@@ -5,7 +5,6 @@ import Button from '@material-ui/core/Button';
 import './App.css';
 import Grid from '@material-ui/core/Grid';
 import axios from 'axios';
-import {Router, Route, IndexRoute, hashHistory} from 'react-router'
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -95,7 +94,6 @@ class Network extends Component {
     render() {
         const {classes} = this.props;
         const net = this.state.network;
-        console.log(net);
 
         return (
             <React.Fragment>
@@ -107,7 +105,7 @@ class Network extends Component {
                             Register
                         </Button> to join {net.name} network
                     </Link>
-                    <p>{net.name} subscribers, call or text anyone using extention</p>
+                    <p>{net.name} subscribers, call or text anyone using extension</p>
                     <Paper className={classes.root}>
                         <Table className={classes.table}>
                             <TableHead>
@@ -117,9 +115,9 @@ class Network extends Component {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {net.subscribers && net.subscribers.map(n => {
+                                {net.subscribers ? net.subscribers.map(n => {
                                     return (
-                                        <TableRow key={n.id}>
+                                        <TableRow key={n.extension}>
                                             {/*<TableCell component="th" scope="row">*/}
                                             {/*{n.id}*/}
                                             {/*</TableCell>*/}
@@ -127,7 +125,11 @@ class Network extends Component {
                                             <TableCell numeric>{n.extension_display}</TableCell>
                                         </TableRow>
                                     );
-                                })}
+                                }) : <TableRow>
+                                    <TableCell>
+                                        No subscribers
+                                    </TableCell>
+                                </TableRow>}
                             </TableBody>
                         </Table>
                     </Paper>

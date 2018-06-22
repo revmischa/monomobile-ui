@@ -8,7 +8,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
 import Register from './Register'
 import Network from './Network'
-import {Route, IndexRoute, Link, HashRouter  as Router} from 'react-router-dom'
+import {Route, HashRouter  as Router} from 'react-router-dom'
 
 
 // import { createMuiTheme } from '@material-ui/core/styles';
