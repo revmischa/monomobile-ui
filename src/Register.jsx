@@ -103,7 +103,7 @@ class Register extends Component {
         const {classes} = this.props;
 
         if (this.state.toNetwork === true) {
-            return <Redirect to='/network' />
+            return <Redirect to='/' />
         }
 
 
